@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+    --lz-primary: #8EC741;
+    --lz-secondary: #196299;
+}
+
+*{
+    font-family: "Inter", sans-serif;
+}
+
+.bg-primary{
+    background: var(--lz-primary);
+}
+
+.bg-secondary{
+    background: var(--lz-secondary);
+}
+
+.inter{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.header::before{
+    content: "";
+    width: 6px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    background: var(--lz-primary);
+}
+
+.lz-carousel-item{
+    max-height: 340px;
+    min-height: 340px;
+    overflow: hidden;
+}
+
+.lz-carousel-item img{
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.lz-carousel-indicators .lz-carousel-indicator{
+    background: var(--lz-slate-50);
+}
+
+.lz-carousel-indicators .lz-carousel-indicator.active{
+    background: var(--lz-primary);
+}
+
+@media (min-width: 641px) {
+    .lz-carousel-item {
+        flex: 0 0 calc(50% - (var(--lz-space-4) / 2));
+        min-height: 420px;
+        max-height: 420px;
+    }
+}
+
+@layer components.carousel {
+    /* Flex container for side-by-side layout + gap */
+    .lz-carousel-track {
+        display: flex;
+        gap: var(--lz-space-4); /* adjust this for bigger/smaller gap */
+        /* optional: align-items: center; */
+    }
+
+    /* Base: make each item span full width */
+    .lz-carousel-item {
+        flex: 0 0 100%;  
+    }
+
+    /* Desktop: two items visible, each takes half minus half the gap */
+    @media (min-width: 641px) {
+        .lz-carousel-item {
+            flex: 0 0 calc(50% - (var(--lz-space-4) / 2));
+            min-height: 520px;
+            max-height: 520px;
+        }
+    }
+
+    /* Your existing show/hide logic still works */
+    .lz-carousel-item {
+        display: none;
+    }
+    .lz-carousel-item.active {
+        display: block; /* flex children respect this */
+    }
+}
+
+.lz-project-grid {
+    /* two “masonry” columns */
+    column-count: 2;
+    column-gap: var(--lz-space-4);       /* horizontal gap */
+}
+
+.lz-project-item {
+    break-inside: avoid-column;          /* keep each item intact in a column */
+    margin-bottom: var(--lz-space-4);
+    height: auto;    /* vertical gap = same size */
+}
+
+.lz-project-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--lz-rounded-md);
+}
