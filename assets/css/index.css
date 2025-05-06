@@ -99,6 +99,21 @@
     column-gap: var(--lz-space-4);       /* horizontal gap */
 }
 
+@media (min-width: 641px) {
+    .lz-project-grid {
+        /* two “masonry” columns */
+        column-count: 3;
+    }
+}
+
+@media (min-width: 729px) {
+    .lz-project-grid {
+        /* two “masonry” columns */
+        column-count: 4;
+    }
+}
+
+
 .lz-project-item {
     break-inside: avoid-column;          /* keep each item intact in a column */
     margin-bottom: var(--lz-space-4);
@@ -122,3 +137,16 @@
 .navbar-collapse.open {
   transform: translateX(0);
 }
+
+#lightbox {
+    transition: opacity 0.3s ease;
+}
+#lightbox.d-none {
+    opacity: 0;
+    pointer-events: none;
+}
+#lightbox.d-flex {
+    opacity: 1;
+    pointer-events: all;
+}
+  
